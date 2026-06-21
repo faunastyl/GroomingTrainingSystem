@@ -1,7 +1,9 @@
 <Solution>
   <Folder Name="/Elementy rozwiązania/">
+    <File Path="Subscriber.cs" />
     <File Path="Training.cs" />
     <File Path="TrainingService.cs" />
+    <File Path="User.cs" />
   </Folder>
   <Project Path="GroomingTrainingSystem.csproj" />
 </Solution>
