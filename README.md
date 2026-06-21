@@ -34,6 +34,7 @@ Projekt ma charakter MVP i stanowi podstawę do dalszego rozwoju systemu, m.in. 
 interfejs użytkownika
 bazę danych
 system wysyłki e-mail/SMS
-📌 Autor
+
+📌 Autor Bożena Czempas-Chowaniec
 
 Projekt edukacyjny – podstawy programowania obiektowego (C#)
