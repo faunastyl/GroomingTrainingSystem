@@ -38,3 +38,24 @@ system wysyłki e-mail/SMS
 📌 Autor Bożena Czempas-Chowaniec
 
 Projekt edukacyjny – podstawy programowania obiektowego (C#)
+
+## Dalszy rozwój projektu
+
+Szkolenia mają charakter stacjonarny i odbywają się w określonym miejscu oraz czasie. Mogą trwać od jednego dnia do kilku tygodni. Po zakończeniu przechodzą do archiwum i nie są już dostępne do zapisów.
+
+Docelowo system będzie umożliwiał:
+
+- przeglądanie dostępnych szkoleń,
+- wyszukiwanie szkoleń po mieście,
+- wyszukiwanie szkoleń po trenerze,
+- dodawanie i zarządzanie szkoleniami przez trenerów,
+- powiadamianie zainteresowanych osób o nowych szkoleniach.
+
+Planowane funkcjonalności:
+
+- integracja z bazą danych (Oracle, MariaDB lub MongoDB),
+- logowanie trenerów i organizatorów,
+- system subskrypcji powiadomień,
+- wysyłka wiadomości e-mail,
+- interfejs użytkownika,
+- filtrowanie i wyszukiwanie szkoleń.
