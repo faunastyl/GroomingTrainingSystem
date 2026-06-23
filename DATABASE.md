@@ -1,64 +1,101 @@
-# Database Design (MVP)
+# Database Design
 
-## Cel
+## Cel projektu
 
-Przygotowanie struktury bazy danych dla systemu powiadomień o szkoleniach groomerskich.
-
-Na obecnym etapie dane przechowywane są w pamięci aplikacji. W kolejnych etapach planowana jest integracja z relacyjną bazą danych (np. MariaDB lub Oracle).
+System umożliwia publikowanie i wyszukiwanie szkoleń groomerskich odbywających się stacjonarnie w określonym miejscu i czasie. Szkolenia mają charakter wydarzeń jednorazowych lub cyklicznych o ograniczonym czasie trwania. Po zakończeniu przechodzą do archiwum i nie można już wziąć w nich udziału.
 
 ---
 
-## Tabela: Users
+## Typy użytkowników
 
-Przechowuje informacje o użytkownikach systemu.
+### Gość (Visitor)
 
-| Pole | Typ |
-|--------|--------|
-| Id | int |
-| Email | varchar |
-| CreatedAt | datetime |
+Nie wymaga logowania.
+
+Może:
+
+* przeglądać szkolenia,
+* wyszukiwać szkolenia po mieście,
+* wyszukiwać szkolenia po trenerze,
+* przeglądać szkolenia archiwalne.
+
+### Subskrybent (Subscriber)
+
+Nie musi posiadać pełnego konta użytkownika.
+
+Może:
+
+* zapisać adres e-mail do powiadomień,
+* otrzymywać informacje o nowych szkoleniach.
+
+### Trener / Organizator (Trainer)
+
+Posiada konto i loguje się do systemu.
+
+Może:
+
+* dodawać szkolenia,
+* edytować własne szkolenia,
+* usuwać własne szkolenia,
+* przeglądać historię dodanych szkoleń.
+
+---
+
+## Tabela: Trainers
+
+| Pole         | Typ     |
+| ------------ | ------- |
+| Id           | int     |
+| Name         | varchar |
+| Email        | varchar |
+| PasswordHash | varchar |
 
 ---
 
 ## Tabela: Trainings
 
-Przechowuje informacje o szkoleniach.
+| Pole        | Typ      |
+| ----------- | -------- |
+| Id          | int      |
+| Title       | varchar  |
+| Description | text     |
+| City        | varchar  |
+| StartDate   | datetime |
+| EndDate     | datetime |
+| TrainerId   | int      |
 
-| Pole | Typ |
-|--------|--------|
-| Id | int |
-| Title | varchar |
-| City | varchar |
-| TrainerName | varchar |
-| Date | datetime |
-| Description | text |
+Relacja:
+
+* jeden trener może dodać wiele szkoleń.
 
 ---
 
-## Tabela: Subscriptions
+## Tabela: Subscribers
 
-Przechowuje informacje o subskrypcjach użytkowników.
-
-| Pole | Typ |
-|--------|--------|
-| Id | int |
-| UserId | int |
+| Pole      | Typ      |
+| --------- | -------- |
+| Id        | int      |
+| Email     | varchar  |
 | CreatedAt | datetime |
+| IsActive  | bool     |
 
 ---
 
-## Relacje
+## Logika biznesowa
 
-- Jeden użytkownik może posiadać jedną lub wiele subskrypcji.
-- Użytkownicy otrzymują powiadomienia o nowych szkoleniach.
-- Szkolenia są dodawane przez trenerów i przechowywane w tabeli Trainings.
+1. Trener dodaje nowe szkolenie.
+2. System zapisuje szkolenie w bazie danych.
+3. Mechanizm Observer wykrywa dodanie nowego szkolenia.
+4. Subskrybenci otrzymują powiadomienie o nowym wydarzeniu.
+5. Po zakończeniu szkolenia jest ono automatycznie oznaczane jako archiwalne.
 
 ---
 
 ## Plan rozwoju
 
-1. Integracja z bazą MariaDB lub Oracle.
-2. Zastąpienie list przechowywanych w pamięci aplikacji zapytaniami do bazy danych.
-3. Dodanie repozytoriów danych (Repository Pattern).
-4. Dodanie wyszukiwania szkoleń po mieście i trenerze.
-5. Integracja z systemem powiadomień e-mail.
+1. Integracja z bazą danych Oracle, MariaDB lub MongoDB.
+2. Implementacja logowania trenerów.
+3. Implementacja systemu subskrypcji e-mail.
+4. Dodanie filtrowania szkoleń według miasta, trenera i dat.
+5. Automatyczna archiwizacja zakończonych szkoleń.
+6. Integracja z usługą wysyłki wiadomości e-mail.
