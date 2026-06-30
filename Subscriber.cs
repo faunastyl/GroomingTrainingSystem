@@ -8,6 +8,6 @@ public class Subscriber : User
 
     public override void Notify(Training training)
     {
-        Console.WriteLine($"[POWIADOMIENIE] {Email}: Nowe szkolenie -> {training.Title} w {training.City} ({training.Date.ToShortDateString()})");
+        Console.WriteLine($"[POWIADOMIENIE] {Email}: Nowe szkolenie -> {training.Title} w {training.City} ({training.StartDate.ToShortDateString()} - {training.EndDate.ToShortDateString()})");
     }
 }

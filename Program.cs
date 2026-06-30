@@ -10,10 +10,12 @@ class Program
 
         service.Subscribe(user);
 
-        service.AddTraining("Strzyżenie psów", "Warszawa", "Anna Kowalska");
-
-        Console.WriteLine("Dodano szkolenie i wysłano powiadomienie.");
-
-        Console.ReadLine();
+        service.AddTraining(
+    "Strzyżenie psów",
+    "Szkolenie podstawowe dla początkujących groomerów",
+    "Warszawa",
+    "Anna Kowalska",
+    new DateTime(2026, 9, 10),
+    new DateTime(2026, 9, 12));
     }
 }

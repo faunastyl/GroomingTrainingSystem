@@ -25,9 +25,22 @@ public class TrainingService
     }
 
     // PRZECIĄŻENIE METODY (wymóg z zadania)
-    public void AddTraining(string title, string city, string trainer)
+    public void AddTraining(
+    string title,
+    string description,
+    string city,
+    string trainer,
+    DateTime startDate,
+    DateTime endDate)
     {
-        Training t = new Training(title, city, trainer, DateTime.Now);
+        Training t = new Training(
+            title,
+            description,
+            city,
+            trainer,
+            startDate,
+            endDate);
+
         AddTraining(t);
     }
 
