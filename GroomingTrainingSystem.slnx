@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/Elementy rozwiązania/">
+    <File Path="Location.cs" />
     <File Path="Subscriber.cs" />
     <File Path="Trainer.cs" />
     <File Path="Training.cs" />
