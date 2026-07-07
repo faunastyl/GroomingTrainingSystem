@@ -59,3 +59,8 @@ Planowane funkcjonalności:
 - wysyłka wiadomości e-mail,
 - interfejs użytkownika,
 - filtrowanie i wyszukiwanie szkoleń.
+
+## Documentation
+
+- [Product Vision](docs/ProductVision.md)
+- [Database](docs/Database.md)
